@@ -3,6 +3,7 @@ import axios from 'axios';
 import CardPeliculas from './components/CardPeliculas';
 import './App.css';
 import EditarPeliculaForm from './components/EditarPelicula';
+import AgregarPelicula from './components/AgregarPelicula';
 
 function App() {
   const [peliculas, setPeliculas] = useState([]);
@@ -44,6 +45,15 @@ function App() {
     }
   };
 
+  const addMovie = async (pelicula) => {
+    try {
+      await axios.post('http://localhost:4000/api/peliculas', pelicula);
+      fetchPeliculas();
+    } catch (error) {
+      console.error('Hubo un error al agregar la película:', error);
+    }
+  };
+
   return (
     <div className="App">
       <h1>Lista de Películas</h1>
@@ -55,6 +65,7 @@ function App() {
       {editPelicula && (
         <EditarPeliculaForm pelicula={editPelicula} onSave={saveEdit} onCancel={() => setEditPelicula(null)} />
       )}
+      <AgregarPelicula onAdd={addMovie} />
     </div>
   );
 }
