@@ -1,0 +1,13 @@
+version: '3'
+services:
+  api:
+    build: C:\Users\bryan\Desktop\APIREST-peliculas\backend
+    ports:
+      - "4000:4000"
+    environment:
+      - NODE_ENV=production
+
+  frontend:
+    build: C:\Users\bryan\Desktop\APIREST-peliculas\frontend
+    ports:
+      - "8080:80"

@@ -122,11 +122,11 @@ app.delete('/api/peliculas/:id', (req, res) => {
 // Editar una película
 app.put('/api/peliculas/:id', (req, res) => {
   const { id } = req.params;
-  const { titulo, protagonista, caracteristicas, urlPelicula } = req.body;
+  const { titulo, protagonista, caracteristicas, urlPelicula, urlImagen } = req.body;
   const peliculaIndex = peliculas.findIndex(pelicula => pelicula.id === parseInt(id));
   
   if (peliculaIndex !== -1) {
-    peliculas[peliculaIndex] = { id: parseInt(id), titulo, protagonista, caracteristicas, urlPelicula };
+    peliculas[peliculaIndex] = { id: parseInt(id), titulo, protagonista, caracteristicas, urlPelicula, urlImagen };
     res.json(peliculas[peliculaIndex]);
   } else {
     res.status(404).json({ error: 'Película no encontrada' });

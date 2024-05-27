@@ -5,6 +5,7 @@ const EditarPeliculaForm = ({ pelicula, onSave, onCancel }) => {
   const [protagonista, setProtagonista] = useState(pelicula.protagonista);
   const [caracteristicas, setCaracteristicas] = useState(pelicula.caracteristicas);
   const [urlPelicula, setUrlPelicula] = useState(pelicula.urlPelicula);
+  const [urlImagen, setUrlImagen] = useState(pelicula.urlImagen);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -29,6 +30,10 @@ const EditarPeliculaForm = ({ pelicula, onSave, onCancel }) => {
       <div>
         <label>URL de la Película</label>
         <input type="text" value={urlPelicula} onChange={(e) => setUrlPelicula(e.target.value)} />
+      </div>
+      <div>
+        <label>URL de la Imagen</label>
+        <input type="text" value={urlImagen} onChange={(e) => setUrlImagen(e.target.value)} />
       </div>
       <button type="submit">Guardar</button>
       <button type="button" onClick={onCancel}>Cancelar</button>
